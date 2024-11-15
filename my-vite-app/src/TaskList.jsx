@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast"; // Import toast
 
 function TaskList({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
   const [editingTaskId, setEditingTaskId] = useState(null);
@@ -24,12 +25,16 @@ function TaskList({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
       priority: editedPriority,
     };
 
-    onEditTask(updatedTask);  // Pass updated task to the parent
-    setEditingTaskId(null);  // Exit edit mode
+    onEditTask(updatedTask); // Pass updated task to the parent
+    setEditingTaskId(null); // Exit edit mode
   };
 
   const handleCancelClick = () => {
-    setEditingTaskId(null);  // Exit edit mode without saving
+    setEditingTaskId(null); // Exit edit mode without saving
+  };
+
+  const handleDeleteClick = (taskId) => {
+    onDeleteTask(taskId);
   };
 
   // Sorting tasks by priority: High, Medium, Low
@@ -47,7 +52,6 @@ function TaskList({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
 
   return (
     <div className="bg-gray-100 p-6">
-      {/* If no tasks */}
       {tasks.length === 0 ? (
         <div className="text-center text-2xl text-gray-700">No tasks available</div>
       ) : (
@@ -61,7 +65,7 @@ function TaskList({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
                 type="checkbox"
                 checked={task.completed}
                 onChange={() => onToggleTask(task.id)}
-                className="transform scale-150 mr-4 mt-2" // Bigger checkbox and slightly lower
+                className="transform scale-150 mr-4 mt-2"
               />
               <div className="flex flex-col space-y-2 w-full">
                 {editingTaskId === task.id ? (
@@ -149,7 +153,7 @@ function TaskList({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
                     Edit
                   </button>
                   <button
-                    onClick={() => onDeleteTask(task.id)}
+                    onClick={() => handleDeleteClick(task.id)}
                     className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none text-2xl"
                   >
                     Delete
