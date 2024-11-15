@@ -56,22 +56,22 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100 p-6">
-        <nav className="flex justify-center space-x-6 bg-white p-4 rounded-md shadow-md mb-6">
+        <nav className="flex justify-center space-x-10 bg-white p-4 rounded-md shadow-md mb-6">
           <Link
             to="/"
-            className="text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-gray-900 transition duration-200"
+            className="text-black text-xl font-bold px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-gray-900 transition duration-200"
           >
             Dashboard
           </Link>
           <Link
             to="/add-task"
-            className="text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-gray-900 transition duration-200"
+            className="text-black text-xl font-bold px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-gray-900 transition duration-200"
           >
             Add Task
           </Link>
           <Link
             to="/search"
-            className="text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-gray-900 transition duration-200"
+            className="text-black text-xl font-bold px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-gray-900 transition duration-200"
           >
             Search
           </Link>
